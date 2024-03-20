@@ -109,6 +109,8 @@ export async function updateInvoice(
   redirect('/dashboard/invoices');
 }
 
+//  ***********************************    Delete Invoice  ***********************************
+
 export async function deleteInvoice(id: string) {
   try {
     await sql`DELETE FROM invoices WHERE id = ${id}`;
@@ -118,6 +120,8 @@ export async function deleteInvoice(id: string) {
     return { message: 'Database Error: Failed to Delete Invoice.', error };
   }
 }
+
+//  ***********************************    Authenticate  ***********************************
 
 export async function authenticate(
   prevState: string | undefined,
@@ -131,7 +135,7 @@ export async function authenticate(
         case 'CredentialsSignin':
           return 'Invalid credentials.';
         default:
-          return 'Something went wrong.';
+          return `Something went wrong. ${error}`;
       }
     }
     throw error;
