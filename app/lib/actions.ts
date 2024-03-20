@@ -136,6 +136,7 @@ export async function authenticate(
           return 'Invalid credentials.';
         default:
           return `Something went wronggggg.`;
+          console.log(error);
       }
     }
     throw error;
